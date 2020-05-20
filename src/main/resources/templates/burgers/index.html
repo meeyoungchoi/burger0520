@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <title>버거목록</title>
@@ -27,6 +29,11 @@
             <td>예)</td>
             <td>와퍼</td>
             <td>5900</td>
+          </tr>
+          <tr th:each="burger: ${burgerList}">
+            <td th:text="${burger.id}">1</td>
+            <td th:text="${burger.name}">Name</td>
+            <td th:text="${burger.price}">Price</td>
           </tr>
         </tbody>
       </table>

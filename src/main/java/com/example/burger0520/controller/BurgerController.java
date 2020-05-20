@@ -6,8 +6,11 @@ import com.example.burger0520.vo.Burger;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -18,7 +21,9 @@ public class BurgerController {
 
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        List<Burger> burgerList = burgerRepository.findAll();
+        model.addAttribute("burgerList", burgerList);
         return "burgers/index";
     }
 
@@ -33,6 +38,10 @@ public class BurgerController {
         log.info(form.toString());
         Burger burger = form.toEntity();
         log.info(burger.toString());
+
+        Burger saved = burgerRepository.save(burger);
+        log.info(saved.toString());
+
         return "redirect:/";
     }
 }

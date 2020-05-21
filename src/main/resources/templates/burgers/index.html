@@ -22,6 +22,7 @@
             <th>#</th>
             <th>Name</th>
             <th>Price</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +35,9 @@
             <td th:text="${burger.id}">1</td>
             <td th:text="${burger.name}">Name</td>
             <td th:text="${burger.price}">Price</td>
+            <td>
+              <a th:href="@{/burgers/edit/{id} (id = ${burger.id}) }" class="btn btn-info">수정</a>
+            </td>
           </tr>
         </tbody>
       </table>

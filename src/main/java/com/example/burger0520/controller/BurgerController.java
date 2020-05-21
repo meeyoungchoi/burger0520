@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -36,6 +37,26 @@ public class BurgerController {
     @PostMapping("/burgers")
     public String create(BurgerForm form) {
         log.info(form.toString());
+        Burger burger = form.toEntity();
+        log.info(burger.toString());
+
+        Burger saved = burgerRepository.save(burger);
+        log.info(saved.toString());
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/burgers/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model) {
+        Burger burger = burgerRepository.findById(id).orElse(null);
+        model.addAttribute("burger", burger);
+        return "burgers/edit";
+    }
+
+    @PostMapping("/burgers/{id}")
+    public String update(BurgerForm form) {
+        log.info(form.toString());
+
         Burger burger = form.toEntity();
         log.info(burger.toString());
 

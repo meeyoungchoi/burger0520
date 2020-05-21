@@ -10,7 +10,7 @@ public class BurgerForm {
     private Integer price;
 
     public Burger toEntity() {
-        return new Burger(null, name, price);
+        return new Burger(id, name, price);
     }
 
 

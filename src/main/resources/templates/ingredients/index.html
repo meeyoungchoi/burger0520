@@ -4,14 +4,14 @@
       xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>버거목록</title>
+    <title>재료목록</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1>버거목록</h1>
-        <a class="btn btn-primary" href="/burgers/new">추가하기</a>
+        <h1>재료목록</h1>
+        <a href="/ingredients/new" class="btn btn-primary">재료추가</a>
       </div>
     </div>
 
@@ -23,30 +23,25 @@
             <th>Name</th>
             <th>Price</th>
             <th>Edit</th>
-            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>예)</td>
-            <td>와퍼</td>
-            <td>5900</td>
+            <td>치즈</td>
+            <td>300</td>
           </tr>
-          <tr th:each="burger: ${burgerList}">
-            <td th:text="${burger.id}">1</td>
-            <td th:text="${burger.name}">Name</td>
-            <td th:text="${burger.price}">Price</td>
+          <tr th:each="ingredient: ${ingredients}">
+            <td th:text="${ingredient.id}">1</td>
+            <td th:text="${ingredient.name}">Name</td>
+            <td th:text="${ingredient.price}">Price</td>
             <td>
-              <a th:href="@{/burgers/edit/{id} (id = ${burger.id}) }" class="btn btn-info">수정</a>
-            </td>
-            <td>
-              <a th:href="@{/burgers/delete/{id} (id = ${burger.id}) }" class="btn btn-danger">삭제</a>
+              <a class="btn btn-info" th:href="@{/ingredients/edit/{id} (id = ${ingredient.id})}">수정</a>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-
 
 
   </body>

@@ -65,4 +65,13 @@ public class BurgerController {
 
         return "redirect:/";
     }
+
+    @GetMapping("/burgers/delete/{id}")
+    public String delete(@PathVariable Integer id) {
+        burgerRepository.deleteById(id);
+        log.info(id + "번 삭제");
+        return "redirect:/";
+    }
+
+
 }

@@ -28,6 +28,7 @@ public class BurgerController {
         return "burgers/index";
     }
 
+
     @GetMapping("/burgers/new")
     public String newBurger() {
         return "burgers/new";

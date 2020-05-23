@@ -23,6 +23,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -33,10 +34,15 @@
           </tr>
           <tr th:each="ingredient: ${ingredients}">
             <td th:text="${ingredient.id}">1</td>
-            <td th:text="${ingredient.name}">Name</td>
+            <td >
+              <a th:text="${ingredient.name}" th:href="@{/ingredients/show/{id} (id = ${ingredient.id})}"></a>
+            </td>
             <td th:text="${ingredient.price}">Price</td>
             <td>
               <a class="btn btn-info" th:href="@{/ingredients/edit/{id} (id = ${ingredient.id})}">수정</a>
+            </td>
+            <td>
+              <a class="btn btn-danger" th:href="@{/ingredients/delete/{id} (id = ${ingredient.id})}">삭제</a>
             </td>
           </tr>
         </tbody>

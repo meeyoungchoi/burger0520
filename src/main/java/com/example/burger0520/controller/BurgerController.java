@@ -77,6 +77,10 @@ public class BurgerController {
     public String edit(@PathVariable Integer id, Model model) {
         Burger burger = burgerRepository.findById(id).orElse(null);
         model.addAttribute("burger", burger);
+
+        List<Ingredient> ingredientList = ingredientRepository.findAll();
+        model.addAttribute("ingredientList", ingredientList);
+
         return "burgers/edit";
     }
 

@@ -28,6 +28,36 @@
             <input class="form-control" name="price" th:value="${burger.price}">
           </div>
         </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2">재료</label>
+          <div class="col-sm-10 form-check form-check-inline" th:each="ingredient1: ${burger.ingredientList}">
+            <div th:each="ingredient: ${ingredientList}">
+              <div  th:if="${ingredient1.id == ingredient.id}">
+                <input class="form-check-input"  type="checkbox"  name="ingredientList" th:text="${ingredient.name}" th:value="${ingredient.id}"
+                       th:checked="ingredient.id" >
+
+              </div>
+              <div th:unless="${ingredient1.id == ingredient.id}">
+                <input type="checkbox"   th:text="${ingredient.name}" th:value="${ingredient.id}"
+                       class="form-check-input"   >
+
+              </div>
+
+            </div>
+
+
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
         <button class="btn btn-primary">제출</button>
       </form>
     </div>

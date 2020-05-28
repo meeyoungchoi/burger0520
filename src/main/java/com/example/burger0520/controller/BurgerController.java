@@ -61,6 +61,7 @@ public class BurgerController {
     }
 
 
+    //메소드 실행이 끝나면 객체가 없어진다
     @PostMapping("/burgers")
     public String create(BurgerForm form) {
         log.info(form.toString());
